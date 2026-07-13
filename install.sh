@@ -15,37 +15,51 @@ logo='
 
 while true; do
     clear_screen
-    echo "$logo"
+
+    printf "%s\n" "$logo"
     echo "[1] HelloWorld"
     echo "[2] MP3 Player"
     echo "[3] ASCII"
     echo "[4] Exit"
+    echo
 
     printf "Choice > "
-    read option
+    read -r option
 
     case "$option" in
         1)
+            echo
             echo "Hello World"
             ;;
+
         2)
+            echo
             echo "MP3 player not implemented in shell."
             ;;
+
         3)
-            
-            printf "Enter text: "
-            read text
-            figlet "$text"
+            echo
+            if command -v figlet >/dev/null 2>&1; then
+                printf "Enter text: "
+                read -r text
+                echo
+                figlet "$text"
+            fi
             ;;
+
         4)
+            echo
             echo "Goodbye!"
             exit 0
             ;;
+
         *)
-            echo "Invalid choice."
+            echo
+            echo "Invalid choice!"
             ;;
     esac
 
+    echo
     printf "Press Enter to continue..."
-    read dummy
+    read -r
 done
