@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 clear_screen() {
-    clear
+    command -v clear >/dev/null && clear
 }
 
 logo='
@@ -44,6 +44,13 @@ while true; do
                 read -r text
                 echo
                 figlet "$text"
+            else
+                echo "Error: figlet is not installed."
+                echo
+                echo "Install it first:"
+                echo "  Debian/Ubuntu: sudo apt install figlet"
+                echo "  Arch Linux:    sudo pacman -S figlet"
+                echo "  macOS:         brew install figlet"
             fi
             ;;
 
